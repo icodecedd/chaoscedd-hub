@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/anton";
+@import "@fontsource/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #111111;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --primary: #f97316;
+  --primary-foreground: #000000;
+  --secondary: #0ea5e9;
+  --secondary-foreground: #000000;
+  --muted: #222222;
+  --muted-foreground: #888888;
+  --accent: #2a2a2a;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #333333;
+  --input: #222222;
+  --ring: #f97316;
+  --radius: 0px;
+
+  /* Brand Accent Colors */
+  --brand-orange: #f97316;
+  --brand-blue: #0ea5e9;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", sans-serif;
+  --font-anton: "Anton", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-blue: var(--brand-blue);
+
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.8;
+      filter: drop-shadow(0 0 5px var(--brand-orange));
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 15px var(--brand-orange));
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply font-sans bg-[#111111] text-foreground antialiased selection:bg-brand-orange selection:text-black;
+  }
+}
+
+@layer utilities {
+  .monolith-card {
+    @apply bg-[#1a1a1a] border border-[#333333] transition-all duration-200 hover:bg-[#222222];
+  }
+
+  .border-hover-orange {
+    @apply hover:border-brand-orange/50 transition-colors;
+  }
+
+  .border-hover-blue {
+    @apply hover:border-brand-blue/50 transition-colors;
+  }
+
+  .text-mono {
+    @apply font-mono text-[11px] tracking-tight uppercase;
+  }
+
+  .header-glow {
+    filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.3));
+  }
+}
