@@ -17,6 +17,8 @@ const HUDCard = ({ item, isBuild }) => {
   return (
     <motion.a
       href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
       onMouseEnter={() => setIsFocused(true)}
       onMouseLeave={() => setIsFocused(false)}
       className="group relative block"
@@ -66,7 +68,7 @@ const HUDCard = ({ item, isBuild }) => {
           >
             {item.icon}
           </div>
-          <div className="flex-grow">
+          <div className="grow">
             <h3 className="font-anton text-lg tracking-widest uppercase text-white group-hover:text-glow-orange">
               {item.name}
             </h3>
@@ -93,7 +95,7 @@ const HUDCard = ({ item, isBuild }) => {
         </div>
 
         {/* HUD Bars */}
-        <div className="absolute left-0 bottom-0 w-full h-[1px] bg-white/5 overflow-hidden">
+        <div className="absolute left-0 bottom-0 w-full h-px bg-white/5 overflow-hidden">
           <motion.div
             animate={{ x: isFocused ? ["0%", "100%"] : "0%" }}
             transition={{ duration: 1, repeat: Infinity }}
@@ -116,7 +118,7 @@ export default function CyberdeckHUD() {
         <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.8)]" />
 
         {/* Scanlines */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-size-[100%_4px]" />
 
         {/* Corner Telemetry */}
         <div className="absolute top-8 left-8 p-4 border-l border-t border-white/20">
@@ -158,11 +160,11 @@ export default function CyberdeckHUD() {
           <div className="w-16 h-1 bg-brand-orange/20" />
         </div>
         <h1 className="mt-4 font-anton text-4xl tracking-[0.3em] uppercase">
-          CYBERDECK_HUD
+          CHAOSCEDD_HUB
         </h1>
       </header>
 
-      <main className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-12 gap-8 max-w-7xl mx-auto w-full">
+      <main className="relative z-10 grow grid grid-cols-1 md:grid-cols-12 gap-8 max-w-7xl mx-auto w-full">
         {/* Navigation Sidebar */}
         <nav className="md:col-span-3 flex flex-col gap-2">
           {SECTIONS.map((section, idx) => (
@@ -218,7 +220,7 @@ export default function CyberdeckHUD() {
                 <HUDCard
                   key={item.name}
                   item={item}
-                  isBuild={SECTIONS[activeSection].title === "BUILDS"}
+                  isBuild={SECTIONS[activeSection].title === "PROJECTS"}
                 />
               ))}
             </motion.div>
@@ -226,7 +228,7 @@ export default function CyberdeckHUD() {
         </section>
       </main>
 
-      <footer className="relative z-10 mt-12 py-4 border-t border-white/10 flex justify-between items-center opacity-30">
+      <footer className="relative z-10 mt-12 py-4 pb-20 border-t border-white/10 flex justify-between items-center opacity-30">
         <div className="text-[9px] font-mono uppercase">
           System_Healthy // All_Ports_Open
         </div>
